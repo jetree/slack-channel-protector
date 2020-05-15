@@ -21,6 +21,33 @@ jobs:
       run: |
         alias phpunit="../vendor/phpunit/phpunit/phpunit"
         phpunit tests/ 
+  
+  deploy:
+    
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.event == 'push'
+    if: github.ref == 'refs/heads/master'
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Install SSH key
+      uses: shimataro/ssh-key-action@v1
+      with: # shimataro/ssh-key-actionに渡すパラメーター
+        private-key: ${{ secrets.SSH_KEY }} 
+        public-key: ${{ secrets.SSH_KEY_PUBLIC }} 
+        name: ed25519
+        known-hosts: ${{ secrets.KNOWN_HOSTS }} 
+
+    - name: deploy
+      with: 
+        HOSTNAME: ${{ secrets.HOSTNAME }}
+        LOGINUSER: ${{ secrets.LOGINUSER }}
+        PORT: ${{ secrets.PORT }}   
+      run: ./vendor/bin/dep deploy production
+
+        
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
