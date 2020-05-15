@@ -6,53 +6,54 @@ on:
   pull_request:
     branches: [ master ]
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - uses: actions/checkout@v2
+  jobs:
+    build:
+      runs-on: ubuntu-latest
 
-    - name: Install dependencies
-      run: composer install --prefer-dist --no-progress --no-suggest
-    
-    - name: phpunit
-      run: |
-        alias phpunit="../vendor/phpunit/phpunit/phpunit"
-        phpunit tests/ 
-  
+      steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress --no-suggest
+      
+      - name: phpunit
+        run: |
+          alias phpunit="../vendor/phpunit/phpunit/phpunit"
+          phpunit tests/ 
+
+
  on:
   push:
     branches: [ master ]
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    # if: github.event == 'push' &&  github.ref == 'refs/heads/master'
+  jobs:
+    deploy:
+      runs-on: ubuntu-latest
+      needs: build
+      # if: github.event == 'push' &&  github.ref == 'refs/heads/master'
 
-    steps:
-    - uses: actions/checkout@v2
-    
-    - name: Install SSH key
-      uses: shimataro/ssh-key-action@v1
-      with: # shimataro/ssh-key-actionに渡すパラメーター
-        private-key: ${{ secrets.SSH_KEY }} 
-        public-key: ${{ secrets.SSH_KEY_PUBLIC }} 
-        name: ed25519
-        known-hosts: ${{ secrets.KNOWN_HOSTS }} 
+      steps:
+      - uses: actions/checkout@v2
+      
+      - name: Install SSH key
+        uses: shimataro/ssh-key-action@v1
+        with: # shimataro/ssh-key-actionに渡すパラメーター
+          private-key: ${{ secrets.SSH_KEY }} 
+          public-key: ${{ secrets.SSH_KEY_PUBLIC }} 
+          name: ed25519
+          known-hosts: ${{ secrets.KNOWN_HOSTS }} 
 
-    - name: deploy
-      with: 
-        HOSTNAME: ${{ secrets.HOSTNAME }}
-        LOGINUSER: ${{ secrets.LOGINUSER }}
-        PORT: ${{ secrets.PORT }}
-      uses: slack-channel-protector/vendor/bin/dep@deploy production
+      - name: deploy
+        with: 
+          HOSTNAME: ${{ secrets.HOSTNAME }}
+          LOGINUSER: ${{ secrets.LOGINUSER }}
+          PORT: ${{ secrets.PORT }}
+        uses: slack-channel-protector/vendor/bin/dep@deploy production
 
-        
+          
 
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
+      # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
+      # Docs: https://getcomposer.org/doc/articles/scripts.md
 
-    # - name: Run test suite
-    #   run: composer run-script test
+      # - name: Run test suite
+      #   run: composer run-script test
