@@ -8,9 +8,8 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
+    
     steps:
     - uses: actions/checkout@v2
 
@@ -22,11 +21,15 @@ jobs:
         alias phpunit="../vendor/phpunit/phpunit/phpunit"
         phpunit tests/ 
   
+ on:
+  push:
+    branches: [ master ]
+
+jobs:
   deploy:
-    
     runs-on: ubuntu-latest
     needs: build
-    if: github.event == 'push' &&  github.ref == 'refs/heads/master'
+    # if: github.event == 'push' &&  github.ref == 'refs/heads/master'
 
     steps:
     - uses: actions/checkout@v2
