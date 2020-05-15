@@ -44,7 +44,7 @@ jobs:
         HOSTNAME: ${{ secrets.HOSTNAME }}
         LOGINUSER: ${{ secrets.LOGINUSER }}
         PORT: ${{ secrets.PORT }}
-      uses: slack-channel-protector/vendor/bin/dep deploy production
+      uses: slack-channel-protector/vendor/bin/dep@deploy production
 
         
 
