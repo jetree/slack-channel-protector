@@ -44,7 +44,7 @@ jobs:
 
     - name: deploy
       run: |
-        ls vender/deployer/deployer/bin
+        ls vendor/deployer/deployer/bin
         alias dep="vendor/deployer/deployer/bin/dep"
         dep list
       env: 
