@@ -44,6 +44,7 @@ jobs:
 
     - name: deploy
       run: |
+        ls
         ./vendor/deployer/deployer/bin/dep list
       # env: 
       #   HOSTNAME: ${{ secrets.HOSTNAME }}
