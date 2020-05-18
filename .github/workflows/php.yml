@@ -49,7 +49,7 @@ jobs:
       run: |
         ls -a
         ./vendor/bin/dep list
-      env: 
+      with: 
         hostnames: ${{ secrets.HOSTNAME }}
         LOGINUSER: ${{ secrets.LOGINUSER }}
         PORT: ${{ secrets.PORT }}
