@@ -50,7 +50,7 @@ jobs:
         ls -a
         ./vendor/bin/dep list
       env: 
-        HOSTNAME: ${{ secrets.HOSTNAME }}
+        hostnames: ${{ secrets.HOSTNAME }}
         LOGINUSER: ${{ secrets.LOGINUSER }}
         PORT: ${{ secrets.PORT }}
           
