@@ -38,16 +38,16 @@ jobs:
         public-key: ${{ secrets.SSH_KEY_PUBLIC }} 
         name: ed25519
         known-hosts: ${{ secrets.KNOWN_HOSTS }} 
-        
+
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
 
     - name: deploy
-      # with: 
-      #   HOSTNAME: ${{ secrets.HOSTNAME }}
-      #   LOGINUSER: ${{ secrets.LOGINUSER }}
-      #   PORT: ${{ secrets.PORT }}
-      run: ls
+      run: dep
+      env: 
+        HOSTNAME: ${{ secrets.HOSTNAME }}
+        LOGINUSER: ${{ secrets.LOGINUSER }}
+        PORT: ${{ secrets.PORT }}
 
         
 
