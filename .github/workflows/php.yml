@@ -44,7 +44,7 @@ jobs:
         HOSTNAME: ${{ secrets.HOSTNAME }}
         LOGINUSER: ${{ secrets.LOGINUSER }}
         PORT: ${{ secrets.PORT }}
-      uses: ls
+      run: ls
 
         
 
