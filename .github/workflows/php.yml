@@ -21,17 +21,12 @@ jobs:
       run: |
         alias phpunit="../vendor/phpunit/phpunit/phpunit"
         phpunit tests/ 
-
-on:
-  push:
-    branches: [ master ]
-
-jobs:
-  deploy:
   
+  deploy:
+    
     runs-on: ubuntu-latest
     needs: build
-    # if: github.event == 'push'
+    if: github.event == 'push'
 
     steps:
     - uses: actions/checkout@v2
@@ -49,7 +44,7 @@ jobs:
         HOSTNAME: ${{ secrets.HOSTNAME }}
         LOGINUSER: ${{ secrets.LOGINUSER }}
         PORT: ${{ secrets.PORT }}
-      uses: slack-channel-protector/vendor/bin/dep@deploy production
+      run: ls
 
         
 
