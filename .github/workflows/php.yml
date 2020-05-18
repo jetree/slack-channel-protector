@@ -42,12 +42,12 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
 
-    - name: Env
-      run: touch .env
+    # - name: Env
+    #   run: touch .env
       
     - name: deploy
       run: |
-        ls
+        ls -a
         ./vendor/deployer/deployer/bin/dep list
       # env: 
       #   HOSTNAME: ${{ secrets.HOSTNAME }}
