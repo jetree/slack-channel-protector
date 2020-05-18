@@ -44,15 +44,12 @@ jobs:
 
     - name: deploy
       run: |
-        ls vendor/deployer/deployer/bin
-        alias dep="vendor/deployer/deployer/bin/dep"
-        dep list
+        vendor/deployer/deployer/bin/dep list
       env: 
         HOSTNAME: ${{ secrets.HOSTNAME }}
         LOGINUSER: ${{ secrets.LOGINUSER }}
         PORT: ${{ secrets.PORT }}
-
-        
+          
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
