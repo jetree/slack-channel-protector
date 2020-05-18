@@ -48,7 +48,7 @@ jobs:
     - name: deploy
       run: |
         ls -a
-        ./vendor/deployer/deployer/bin/dep list
+        ./vendor/bin/dep list
       # env: 
       #   HOSTNAME: ${{ secrets.HOSTNAME }}
       #   LOGINUSER: ${{ secrets.LOGINUSER }}
