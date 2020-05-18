@@ -40,10 +40,10 @@ jobs:
         known-hosts: ${{ secrets.KNOWN_HOSTS }} 
 
     - name: deploy
-      with: 
-        HOSTNAME: ${{ secrets.HOSTNAME }}
-        LOGINUSER: ${{ secrets.LOGINUSER }}
-        PORT: ${{ secrets.PORT }}
+      # with: 
+      #   HOSTNAME: ${{ secrets.HOSTNAME }}
+      #   LOGINUSER: ${{ secrets.LOGINUSER }}
+      #   PORT: ${{ secrets.PORT }}
       run: ls
 
         
