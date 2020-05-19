@@ -45,9 +45,9 @@ jobs:
     - name: Env
       run: |
         touch .env
-        echo "hostname: ${{ secrets.HOSTNAME }}" > .env
-        echo "loginuser: ${{ secrets.LOGINUSER }}" > .env
-        echo "port: ${{ secrets.PORT }}" > .env
+        echo "HOSTNAME: ${{ secrets.HOSTNAME }}" > .env
+        echo "LOGINUSER: ${{ secrets.LOGINUSER }}" > .env
+        echo "PORT: ${{ secrets.PORT }}" > .env
       
     - name: deploy
       run: |
