@@ -42,17 +42,21 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
 
-    - name: Env
-      run: |
-        touch .env
-        echo "HOSTNAME: ${{ secrets.HOSTNAME }}" > .env
-        echo "LOGINUSER: ${{ secrets.LOGINUSER }}" > .env
-        echo "PORT: ${{ secrets.PORT }}" > .env
+    # - name: Env
+    #   run: |
+    #     touch .env
+    #     echo "HOSTNAME: ${{ secrets.HOSTNAME }}" > .env
+    #     echo "LOGINUSER: ${{ secrets.LOGINUSER }}" > .env
+    #     echo "PORT: ${{ secrets.PORT }}" > .env
       
     - name: deploy
       run: |
         ls -a
         ./vendor/bin/dep
+      env: 
+        HOSTNAME: ${{ secrets.HOSTNAME }}
+        LOGINUSER: ${{ secrets.LOGINUSER }}
+        PORT: ${{ secrets.PORT }}
           
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
