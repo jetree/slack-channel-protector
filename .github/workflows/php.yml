@@ -53,10 +53,6 @@ jobs:
       run: |
         # ls -a
         ./vendor/bin/dep
-      env: 
-        hostname: ${{ secrets.HOSTNAME }}
-        loginuser: ${{ secrets.LOGINUSER }}
-        port: ${{ secrets.PORT }}
           
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
