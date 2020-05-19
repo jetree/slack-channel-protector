@@ -43,7 +43,12 @@ jobs:
       run: composer install --prefer-dist --no-progress --no-suggest
 
     - name: Env
-      run: touch .env
+      run: |
+        touch .env
+        echo 
+        "hostname: ${{ secrets.HOSTNAME }}
+        LOGINUSER: ${{ secrets.LOGINUSER }}
+        PORT: ${{ secrets.PORT }}" > .env
       
     - name: deploy
       run: |
