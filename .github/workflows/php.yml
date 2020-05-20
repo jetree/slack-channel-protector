@@ -42,7 +42,7 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
 
-    # - name: Env
+    # - name: create Env
     #   run: |
     #     touch .env
     #     echo "HOSTNAME: ${{ secrets.HOSTNAME }}" > .env
@@ -51,7 +51,7 @@ jobs:
       
     - name: deploy
       run: |
-        ls -a
+        php -i
         ./vendor/bin/dep
       env: 
         HOSTNAME: ${{ secrets.HOSTNAME }}
