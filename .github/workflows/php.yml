@@ -41,26 +41,11 @@ jobs:
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
-
-    # - name: create Env
-    #   run: |
-    #     touch .env
-    #     echo "HOSTNAME: ${{ secrets.HOSTNAME }}" > .env
-    #     echo "LOGINUSER: ${{ secrets.LOGINUSER }}" > .env
-    #     echo "PORT: ${{ secrets.PORT }}" > .env
       
     - name: deploy
-      run: |
-        php -i
-        ./vendor/bin/dep
+      run: ./vendor/bin/dep deploy production
       env: 
         HOSTNAME: ${{ secrets.HOSTNAME }}
         LOGINUSER: ${{ secrets.LOGINUSER }}
         PORT: ${{ secrets.PORT }}
-          
 
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
-
-    # - name: Run test suite
-    #   run: composer run-script test
