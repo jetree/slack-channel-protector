@@ -23,6 +23,8 @@ set('shared_dirs', []);
 // Writable dirs by web server 
 set('writable_dirs', []);
 
+set('ssh_multiplexing', true);
+
 // Hosts
 
 host(getenv('HOSTNAME'))
@@ -36,7 +38,7 @@ host(getenv('HOSTNAME'))
 desc('Deploy your project');
 task('deploy', [
     'deploy:info',
-    // 'deploy:prepare',
+    'deploy:prepare',
     'deploy:lock',
     'deploy:release',
     'deploy:update_code',
