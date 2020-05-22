@@ -43,7 +43,7 @@ jobs:
       run: composer install --prefer-dist --no-progress --no-suggest
       
     - name: deploy
-      run: ./vendor/bin/dep deploy production --hosts=${{ secrets.HOSTNAME }}
+      run: ./vendor/bin/dep deploy production -vvv
       env: 
         HOSTNAME: ${{ secrets.HOSTNAME }}
         LOGINUSER: ${{ secrets.LOGINUSER }}

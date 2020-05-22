@@ -4,6 +4,7 @@ namespace Deployer;
 require_once __DIR__ . '/vendor/autoload.php';
 
 require 'recipe/common.php';
+use YowayowaEnginners\SlackChannelProtector\Env;
 
 // Project name
 set('application', 'slack-channel-protector');
@@ -25,9 +26,9 @@ set('writable_dirs', []);
 
 // Hosts
 
-host(getenv('HOSTNAME'))
-    ->user(getenv('LOGINUSER'))
-    ->port(getenv('PORT'))
+host(Env::getEnvValue('HOSTNAME'))
+    ->user(Env::getEnvValue('LOGINUSER'))
+    ->port(ENV::getEnvValue('PORT'))
     ->stage('production')
     ->set('deploy_path', '~/slack-channel-protector');
 
