@@ -29,14 +29,14 @@ host(getenv('HOSTNAME'))
     ->user(getenv('LOGINUSER'))
     ->port(getenv('PORT'))
     ->stage('production')
-    ->set('deploy_path', '~/slack-channel-protector');
+    ->set('deploy_path', '/slack-channel-protector');
 
 // Tasks
 
 desc('Deploy your project');
 task('deploy', [
     'deploy:info',
-    'deploy:prepare',
+    // 'deploy:prepare',
     'deploy:lock',
     'deploy:release',
     'deploy:update_code',
