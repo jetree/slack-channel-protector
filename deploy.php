@@ -26,32 +26,32 @@ set('writable_dirs', []);
 
 // Hosts
 
-// host(getenv('HOSTNAME'))
-//     ->user(getenv('LOGINUSER'))
-//     ->port(('PORT'))
-//     ->stage('production')
-//     ->set('deploy_path', '~/slack-channel-protector');
-
-host(Env::getEnvValue('HOSTNAME'))
-    ->user(Env::getEnvValue('LOGINUSER'))
-    ->port(Env::getEnvValue('PORT'))
+host(getenv('HOSTNAME'))
+    ->user(getenv('LOGINUSER'))
+    ->port(('PORT'))
     ->stage('production')
     ->set('deploy_path', '~/slack-channel-protector');
+
+// host(Env::getEnvValue('HOSTNAME'))
+//     ->user(Env::getEnvValue('LOGINUSER'))
+//     ->port(Env::getEnvValue('PORT'))
+//     ->stage('production')
+//     ->set('deploy_path', '~/slack-channel-protector');
 
 // Tasks
 
 desc('Deploy your project');
 task('deploy', [
     'deploy:info',
-    // 'deploy:prepare',
-    // 'deploy:lock',
-    // 'deploy:release',
-    // 'deploy:update_code',
-    // 'deploy:shared',
-    // 'deploy:writable',
-    // 'deploy:vendors',
-    // 'deploy:clear_paths',
-    // 'deploy:symlink',
+    'deploy:prepare',
+    'deploy:lock',
+    'deploy:release',
+    'deploy:update_code',
+    'deploy:shared',
+    'deploy:writable',
+    'deploy:vendors',
+    'deploy:clear_paths',
+    'deploy:symlink',
     'deploy:unlock',
     'cleanup',
     'success'

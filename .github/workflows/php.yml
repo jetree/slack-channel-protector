@@ -44,9 +44,10 @@ jobs:
       
     - name: deploy
       run: |
-        cd /home/runner/.ssh
-        ls -a
+        # cd /home/runner/.ssh
+        # ls -a
         ./vendor/bin/dep deploy production -vvv
+        php -i
       env: 
         HOSTNAME: ${{ secrets.HOSTNAME }}
         LOGINUSER: ${{ secrets.LOGINUSER }}
