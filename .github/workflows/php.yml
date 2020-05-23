@@ -44,7 +44,7 @@ jobs:
       
     - name: deploy
       run: |
-        ./vendor/bin/dep deploy production -vvv
+        ./vendor/bin/dep deploy production -vv
       env: 
         HOSTNAME: ${{ secrets.HOSTNAME }}
         LOGINUSER: ${{ secrets.LOGINUSER }}
