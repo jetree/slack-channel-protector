@@ -47,7 +47,7 @@ jobs:
         ls -a
         ./vendor/bin/dep deploy production -vvv
       env: 
-        HOSTNAME: AAAA
+        HOSTNAME: www74.conoha.ne.jp
         LOGINUSER: ${{ secrets.LOGINUSER }}
         PORT: ${{ secrets.PORT }}
 
