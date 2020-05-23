@@ -44,9 +44,6 @@ jobs:
       
     - name: deploy
       run: |
-        cd /home/runner/.ssh
-        ls -a
-        type known_hosts
         ./vendor/bin/dep deploy production -vvv
       env: 
         HOSTNAME: ${{ secrets.HOSTNAME }}
