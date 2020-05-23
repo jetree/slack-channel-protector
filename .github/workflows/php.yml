@@ -44,10 +44,12 @@ jobs:
       
     - name: deploy
       run: |
+        cd /home/runner/.ssh
         ls -a
+        type known_hosts
         ./vendor/bin/dep deploy production -vvv
       env: 
-        HOSTNAME: www74.conoha.ne.jp
+        HOSTNAME: ${{ secrets.HOSTNAME }}
         LOGINUSER: ${{ secrets.LOGINUSER }}
         PORT: ${{ secrets.PORT }}
 
