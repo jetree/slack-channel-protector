@@ -47,7 +47,7 @@ jobs:
         ls -a
         ./vendor/bin/dep deploy production -vvv
       env: 
-        HOSTNAME: ${{ secrets.HOSTNAME }}
+        HOSTNAME: AAAA
         LOGINUSER: ${{ secrets.LOGINUSER }}
         PORT: ${{ secrets.PORT }}
 
