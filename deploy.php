@@ -28,7 +28,7 @@ set('writable_dirs', []);
 
 host(getenv('HOSTNAME'))
     ->user(getenv('LOGINUSER'))
-    ->port(('PORT'))
+    ->port(getenv('PORT'))
     ->stage('production')
     ->set('deploy_path', '~/slack-channel-protector');
 
