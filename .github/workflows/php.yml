@@ -44,7 +44,7 @@ jobs:
       
     - name: ssh
       run: |
-        ssh ${{ secrets.LOGINUSER }}@${{ secrets.HOSTNAME }} -p ${{ secrets.PORT }}
+        ssh -t ${{ secrets.LOGINUSER }}@${{ secrets.HOSTNAME }} -p ${{ secrets.PORT }}
       env: 
         HOSTNAME: ${{ secrets.HOSTNAME }}
         LOGINUSER: ${{ secrets.LOGINUSER }}
