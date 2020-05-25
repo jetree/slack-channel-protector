@@ -42,6 +42,14 @@ jobs:
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
       
+    - name: ssh
+      run: |
+        ssh ${{ secrets.LOGINUSER }}@${{ secrets.HOSTNAME }} -p ${{ secrets.PORT }}
+      env: 
+        HOSTNAME: ${{ secrets.HOSTNAME }}
+        LOGINUSER: ${{ secrets.LOGINUSER }}
+        PORT: ${{ secrets.PORT }}
+
     - name: deploy
       run: |
         ./vendor/bin/dep deploy production -vvv
