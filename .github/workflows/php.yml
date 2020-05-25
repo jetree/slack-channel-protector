@@ -31,6 +31,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
+    - name: GitHub Event Check
+      run: cat $GITHUB_EVENT
+
     - name: Install SSH key
       uses: shimataro/ssh-key-action@v1
       with: # shimataro/ssh-key-actionに渡すパラメーター
@@ -44,7 +47,7 @@ jobs:
       
     - name: ssh
       run: |
-        ssh -t ${{ secrets.LOGINUSER }}@${{ secrets.HOSTNAME }} -p ${{ secrets.PORT }}
+        ssh -t ${ LOGINUSER }@${ HOSTNAME } -p ${ PORT }
       env: 
         HOSTNAME: ${{ secrets.HOSTNAME }}
         LOGINUSER: ${{ secrets.LOGINUSER }}
