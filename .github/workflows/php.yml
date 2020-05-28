@@ -47,6 +47,7 @@ jobs:
       
     - name: ssh
       run: |
+        ssh -vvv $HOSTNAME
         echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
         ssh -o StrictHostKeyChecking=no -t -t $LOGINUSER@$HOSTNAME -p $PORT
       env: 
