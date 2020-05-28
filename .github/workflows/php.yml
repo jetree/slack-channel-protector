@@ -48,7 +48,7 @@ jobs:
     - name: ssh
       run: |
         echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-        ssh -t -t $LOGINUSER@$HOSTNAME -p $PORT
+        ssh -o StrictHostKeyChecking=no -t -t $LOGINUSER@$HOSTNAME -p $PORT
       env: 
         HOSTNAME: ${{ secrets.HOSTNAME }}
         LOGINUSER: ${{ secrets.LOGINUSER }}
