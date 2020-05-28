@@ -47,7 +47,9 @@ jobs:
       
     - name: ssh
       run: |
-        echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+
+        mkdir ~/home/runner/.ssh
+        echo "$PRIVATE_KEY" > /.ssh/id_ed25519 && chmod 600 id_ed25519
         ssh -o StrictHostKeyChecking=no -t -t -vvv $LOGINUSER@$HOSTNAME -p $PORT
       env: 
         HOSTNAME: ${{ secrets.HOSTNAME }}
