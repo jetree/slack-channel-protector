@@ -48,7 +48,8 @@ jobs:
     - name: ssh
       run: |
         echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-        ssh -t -i private_key $LOGINUSER@$HOSTNAME -p $PORT 
+        # ssh -t -i private_key $LOGINUSER@$HOSTNAME -p $PORT 
+        ls
       env: 
         HOSTNAME: ${{ secrets.HOSTNAME }}
         LOGINUSER: ${{ secrets.LOGINUSER }}
