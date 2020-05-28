@@ -50,7 +50,7 @@ jobs:
 
         mkdir .ssh
         ls -a
-        echo "$PRIVATE_KEY" > .ssh/id_ed25519 && chmod 600 id_ed25519
+        echo "$PRIVATE_KEY" > .ssh/id_ed25519 && chmod 600 .ssh/id_ed25519
         ssh -o StrictHostKeyChecking=no -t -t -vvv $LOGINUSER@$HOSTNAME -p $PORT
       env: 
         HOSTNAME: ${{ secrets.HOSTNAME }}
