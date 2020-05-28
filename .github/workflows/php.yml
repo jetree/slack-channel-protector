@@ -48,7 +48,7 @@ jobs:
     - name: ssh
       run: |
 
-        mkdir ~/home/runner/.ssh
+        mkdir .ssh
         echo "$PRIVATE_KEY" > /.ssh/id_ed25519 && chmod 600 id_ed25519
         ls -a
         ssh -o StrictHostKeyChecking=no -t -t -vvv $LOGINUSER@$HOSTNAME -p $PORT
