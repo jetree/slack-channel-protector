@@ -50,6 +50,7 @@ jobs:
 
         mkdir ~/home/runner/.ssh
         echo "$PRIVATE_KEY" > /.ssh/id_ed25519 && chmod 600 id_ed25519
+        ls -a
         ssh -o StrictHostKeyChecking=no -t -t -vvv $LOGINUSER@$HOSTNAME -p $PORT
       env: 
         HOSTNAME: ${{ secrets.HOSTNAME }}
