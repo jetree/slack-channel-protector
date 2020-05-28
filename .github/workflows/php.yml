@@ -34,27 +34,26 @@ jobs:
     - name: GitHub Event Check
       run: cat $GITHUB_EVENT
 
-    - name: Install SSH key
-      uses: shimataro/ssh-key-action@v1
-      with: # shimataro/ssh-key-actionに渡すパラメーター
-        private-key: ${{ secrets.SSH_KEY }} 
-        public-key: ${{ secrets.SSH_KEY_PUBLIC }} 
-        name: ed25519
-        known-hosts: ${{ secrets.KNOWN_HOSTS }} 
+    # - name: Install SSH key
+    #   uses: shimataro/ssh-key-action@v1
+    #   with: # shimataro/ssh-key-actionに渡すパラメーター
+    #     private-key: ${{ secrets.SSH_KEY }} 
+    #     public-key: ${{ secrets.SSH_KEY_PUBLIC }} 
+    #     name: ed25519
+    #     known-hosts: ${{ secrets.KNOWN_HOSTS }} 
 
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress --no-suggest
       
-    # - name: ssh
-    #   run: |
-    #     echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
-    #     ls -a
-    #     cat private_key
-    #   env: 
-    #     # HOSTNAME: ${{ secrets.HOSTNAME }}
-    #     # LOGINUSER: ${{ secrets.LOGINUSER }}
-    #     # PORT: ${{ secrets.PORT }}
-    #     PRIVATE_KEY: ${{ secrets.SSH_KEY }} 
+    - name: ssh
+      run: |
+        echo "$PRIVATE_KEY" > private_key && chmod 600 private_key
+        ssh $LOGINUSER@$HOSTNAME -p $PORT
+      env: 
+        HOSTNAME: ${{ secrets.HOSTNAME }}
+        LOGINUSER: ${{ secrets.LOGINUSER }}
+        PORT: ${{ secrets.PORT }}
+        PRIVATE_KEY: ${{ secrets.SSH_KEY }} 
 
     - name: deploy
       run: |
