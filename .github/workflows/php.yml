@@ -53,7 +53,7 @@ jobs:
         echo "$PRIVATE_KEY" > .ssh/id_ed25519 && chmod 600 .ssh/id_ed25519
         # cd .ssh
         # ls -a
-        # ssh -o StrictHostKeyChecking=no -t -t -vvv $LOGINUSER@$HOSTNAME -p $PORT
+        ssh -o StrictHostKeyChecking=no -t -t -vvv $LOGINUSER@$HOSTNAME -p $PORT
       env: 
         HOSTNAME: ${{ secrets.HOSTNAME }}
         LOGINUSER: ${{ secrets.LOGINUSER }}
